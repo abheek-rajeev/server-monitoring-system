@@ -2,7 +2,6 @@ import React,{useEffect, useState} from "react";
 import { realtimeDb } from "../firebase";
 import { onValue,ref } from "firebase/database";
 import Cards from "./Cards";
-import { getData, storeData } from "../DataStorage";
 
 function createCard(det){
     return <Cards
@@ -23,7 +22,6 @@ export default function Details(){
         onValue(ref(realtimeDb),(snapshot)=>{
             var data=snapshot.val();
             setValue(data);
-            storeData(data);
         });
     },[]);
     console.log(values);
